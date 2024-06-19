@@ -26,6 +26,10 @@ export async function willSponsor({
   entrypoint: string;
   userOp: UserOperation<"v0.6">;
 }) {
+  console.log("utils");
+  console.log("chainId", chainId);
+  console.log("entrypoint", entrypoint);
+  console.log("userOp", userOp);
   // check chain id
   if (chainId !== base.id) return false;
   // check entrypoint

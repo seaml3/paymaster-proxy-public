@@ -2,6 +2,8 @@ import { paymasterClient } from "../config";
 import { willSponsor } from "../utils";
 
 export async function POST(r: Request) {
+  console.log("paymaster route");
+  console.log("request", r);
   const req = await r.json();
   const method = req.method;
 
