@@ -78,7 +78,7 @@ export async function willSponsor({
       data: Hex;
     }[];
     // modify if want to allow batch calls to your contract
-    if (calls.length > 3) return false;
+    if (calls.length > 4) return false;
 
     let callToCheckIndex = 0;
     console.log("all calls", calls);
@@ -102,7 +102,7 @@ export async function willSponsor({
     //   data: calls[callToCheckIndex].data,
     // });
     // if (innerCalldata.functionName !== "safeMint") return false;
-
+    console.log("checking calls");
     calls.forEach((call) => {
       const address = call.target;
       if (isWalletAddress(address)) {
