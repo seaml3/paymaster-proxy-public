@@ -1,5 +1,21 @@
 node_modules
 dist
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+
 .env
 Dockerfile
 .dockerignore
