@@ -14,18 +14,14 @@
     "@uniswap/permit2-sdk": "^1.2.1",
     "next": "13.5.3",
     "permissionless": "^0.1.26",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "siwe": "^2.3.2",
-    "viem": "^2.9.32",
-    "wagmi": "^2.9.5"
+    "viem": "^2.9.32"
   },
   "devDependencies": {
     "@biomejs/biome": "1.7.3",
     "@types/node": "^20.7.2",
     "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.7",
-    "@wagmi/cli": "latest",
     "bufferutil": "^4.0.7",
     "encoding": "^0.1.13",
     "lokijs": "^1.5.12",

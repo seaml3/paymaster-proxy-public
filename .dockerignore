@@ -1,0 +1,16 @@
+node_modules
+dist
+.env
+Dockerfile
+.dockerignore
+.git
+.gitignore
+.vscode
+.idea
+logs
+*.log
+*.tsbuildinfo
+coverage
+*.pem
+*.key
+*.crt
