@@ -84,11 +84,11 @@ export async function willSponsor({
     console.log("all callsx", calls);
     if (calls.length > 1) {
       // if there is more than one call, check if the first is a magic spend call
-      if (calls[0].target.toLowerCase() !== magicSpendAddress.toLowerCase()) {
-        console.log("first call is not a magic spend");
+      if (calls[0].target.toLowerCase() === magicSpendAddress.toLowerCase()) {
+        console.log("first call is a magic spend");
         return false;
       }
-      console.log("first call is a magic spend");
+      console.log("first call is not a magic spend");
       callToCheckIndex = 1;
     }
 
