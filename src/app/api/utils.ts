@@ -82,17 +82,6 @@ export async function willSponsor({
 
     let callToCheckIndex = 0;
     console.log("all callsx", calls);
-    if (calls.length > 1) {
-      // if there is more than one call, check if the first is a magic spend call
-      if (calls[0].target.toLowerCase() === magicSpendAddress.toLowerCase()) {
-        console.log("first call is a magic spend");
-        return false;
-      }
-      console.log("first call is not a magic spend");
-      callToCheckIndex = 1;
-    }
-
-    console.log("address", calls[callToCheckIndex].target);
 
     // if (
     //   calls[callToCheckIndex].target.toLowerCase() !==
@@ -115,15 +104,17 @@ export async function willSponsor({
         });
         console.log("call data wallet", calldata);
       } else {
-        const calldata = decodeFunctionData({
-          abi: erc20Abi,
-          data: call.data,
-        });
-        console.log("call data erc20", calldata);
-        // check if function is approve
-        if (calldata.functionName !== "approve") return false;
-        // check if the spender is the wallet
-        if (calldata.args[0] !== walletAddress) return false;
+        if (address.toLowerCase() !== magicSpendAddress.toLowerCase()) {
+          const calldata = decodeFunctionData({
+            abi: erc20Abi,
+            data: call.data,
+          });
+          console.log("call data erc20", calldata);
+          // check if function is approve
+          if (calldata.functionName !== "approve") return false;
+          // check if the spender is the wallet
+          if (calldata.args[0] !== walletAddress) return false;
+        }
       }
     });
 
