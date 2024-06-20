@@ -83,17 +83,6 @@ export async function willSponsor({
     let callToCheckIndex = 0;
     console.log("all callsx", calls);
 
-    // if (
-    //   calls[callToCheckIndex].target.toLowerCase() !==
-    //   myNFTAddress.toLowerCase()
-    // )
-    //   return false;
-
-    // const innerCalldata = decodeFunctionData({
-    //   abi: myNFTABI,
-    //   data: calls[callToCheckIndex].data,
-    // });
-    // if (innerCalldata.functionName !== "safeMint") return false;
     console.log("checking calls");
     await calls.forEach((call) => {
       const address = call.target;
@@ -103,6 +92,11 @@ export async function willSponsor({
           data: call.data,
         });
         console.log("call data wallet", calldata);
+        if (
+          calldata.functionName !== "deposit" &&
+          calldata.functionName !== "depositEth"
+        )
+          return false;
       } else {
         if (address.toLowerCase() !== magicSpendAddress.toLowerCase()) {
           const calldata = decodeFunctionData({
