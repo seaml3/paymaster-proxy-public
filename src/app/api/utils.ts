@@ -5,6 +5,7 @@ import {
   Hex,
   decodeAbiParameters,
   decodeFunctionData,
+  erc20Abi,
 } from "viem";
 import { base } from "viem/chains";
 import { client } from "./config";
@@ -15,7 +16,11 @@ import {
   erc1967ProxyImplementationSlot,
   magicSpendAddress,
 } from "./constants";
-import { myNFTABI, myNFTAddress } from "@/ABIs/myNFT";
+import { walletAbi, walletAddress } from "@/ABIs/wallet";
+
+function isWalletAddress(address: Address) {
+  return address.toLowerCase() === walletAddress.toLowerCase();
+}
 
 export async function willSponsor({
   chainId,
@@ -98,9 +103,29 @@ export async function willSponsor({
     // });
     // if (innerCalldata.functionName !== "safeMint") return false;
 
+    calls.forEach((call) => {
+      const address = call.target;
+      if (isWalletAddress(address)) {
+        const calldata = decodeFunctionData({
+          abi: walletAbi,
+          data: call.data,
+        });
+        console.log("call data wallet", calldata);
+      } else {
+        const calldata = decodeFunctionData({
+          abi: erc20Abi,
+          data: call.data,
+        });
+        console.log("call data erc20", calldata);
+        // check if function is approve
+        if (calldata.functionName !== "approve") return false;
+        // check if the spender is the wallet
+        if (calldata.args[0] !== walletAddress) return false;
+      }
+    });
+
     return true;
   } catch (e) {
     console.error(`willSponsor check failed: ${e}`);
     return false;
   }
-}
