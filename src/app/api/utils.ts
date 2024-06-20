@@ -106,7 +106,7 @@ export async function willSponsor({
     // });
     // if (innerCalldata.functionName !== "safeMint") return false;
     console.log("checking calls");
-    calls.forEach((call) => {
+    await calls.forEach((call) => {
       const address = call.target;
       if (isWalletAddress(address)) {
         const calldata = decodeFunctionData({
