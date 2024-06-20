@@ -2,8 +2,6 @@ import { paymasterClient } from "../config";
 import { willSponsor } from "../utils";
 
 export async function POST(r: Request) {
-  console.log("paymaster route");
-  console.log("request", r);
   const req = await r.json();
   const method = req.method;
 
@@ -14,8 +12,11 @@ export async function POST(r: Request) {
   const [userOp, entrypoint, chainId] = req.params;
 
   if (!willSponsor({ chainId: parseInt(chainId), entrypoint, userOp })) {
+    console.log("not a sponsorable operation");
     return Response.json({ error: "Not a sponsorable operation" });
   }
+
+  console.log("is a sponsorable operation");
 
   if (method === "pm_getPaymasterStubData") {
     const result = await paymasterClient.getPaymasterStubData({
