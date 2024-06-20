@@ -178,4 +178,5 @@ export const walletAbi = [
   },
 ] as const;
 
-export const walletAddress = "0xD5da60a7CFe87C73AEa0Bf83EBe75e520F72ccD3";
+console.log(process.env.WALLET_ADDRESS, 'wallet address');
+export const walletAddress = process.env.WALLET_ADDRESS ||  "0xD5da60a7CFe87C73AEa0Bf83EBe75e520F72ccD3";
