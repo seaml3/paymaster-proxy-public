@@ -78,7 +78,7 @@ export async function willSponsor({
       data: Hex;
     }[];
     // modify if want to allow batch calls to your contract
-    if (calls.length > 5) return false;
+    if (calls.length > 3) return false;
 
     let callToCheckIndex = 0;
     console.log("all calls", calls);
@@ -129,3 +129,4 @@ export async function willSponsor({
     console.error(`willSponsor check failed: ${e}`);
     return false;
   }
+}
