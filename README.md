@@ -14,8 +14,9 @@ To use:
 2. create a new wallet, or use an existing one
 3. transact! Click "mint" and use your new smart wallet on Base Sepolia.
 
-ETH
-all calls [
+-----
+## example of contracts call for ETH
+[
   {
     target: '0xD5da60a7CFe87C73AEa0Bf83EBe75e520F72ccD3', --> wallet
     value: 100000000000n,
@@ -23,8 +24,8 @@ all calls [
   }
 ]
 
-erc20 token
-all calls [
+## example of contracts call for ERC20
+[
   {
     target: '0xf62FB3d97bDAFd50F028bA4D5fB5beDA0038CaE0',
     value: 0n,
