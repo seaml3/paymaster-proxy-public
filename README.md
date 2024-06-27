@@ -16,6 +16,7 @@ To use:
 
 -----
 ## example of contracts call for ETH
+```
 [
   {
     target: '0xD5da60a7CFe87C73AEa0Bf83EBe75e520F72ccD3', --> wallet
@@ -23,8 +24,10 @@ To use:
     data: '0xd3f5475f000000000000000000000000000000000000000000000000000000008c936305'
   }
 ]
+```
 
 ## example of contracts call for ERC20
+```
 [
   {
     target: '0xf62FB3d97bDAFd50F028bA4D5fB5beDA0038CaE0',
@@ -37,3 +40,4 @@ To use:
     data: '0xb1cccca2000000000000000000000000f62fb3d97bdafd50f028ba4d5fb5beda0038cae00000000000000000000000000000000000000000000000001bc16d674ec8000000000000000000000000000000000000000000000000000000000000bcc568e0'
   }
 ]
+```
